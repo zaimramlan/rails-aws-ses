@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title Payment Reminders
+    meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+  body
+    .container
+      - if notice
+        .alert.alert-success.mt-3 role='alert'
+          = notice
+          button.close aria-label='close' data-dismiss='alert'
+            span aria-hidden='true' &times;
+      - if alert
+        .alert.alert-danger.mt-3 role='alert'
+          = alert
+          button.close aria-label='close' data-dismiss='alert'
+            span aria-hidden='true' &times;            
+      = yield

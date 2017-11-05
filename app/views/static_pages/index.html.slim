@@ -1,0 +1,24 @@
+.card.mt-3
+  .card-body
+    h4.card-title Send Test Email
+    h6.card-subtitle.text-muted.mb-5 Form to send test email using AWS SES
+    = form_tag send_email_path, :method => 'post'
+      .form-group.row
+        = label_tag 'From', 'From', :class => 'col-form-label col-md-2'
+        .col-md-10
+          = text_field_tag 'email[from]', ENV['FROM_EMAIL'], :class => 'form-control', :readonly => 'readonly'
+      .form-group.row
+        = label_tag 'To', 'To', :class => 'col-form-label col-md-2'
+        .col-md-10
+          = text_field_tag 'email[to]', ENV['TO_EMAIL'], :class => 'form-control', :readonly => 'readonly'
+      .form-group.row
+        = label_tag 'Subject', 'Subject', :class => 'col-form-label col-md-2'
+        .col-md-10
+          = text_field_tag 'email[subject]', nil, :class => 'form-control'
+      .form-group.row
+        = label_tag 'Message', 'Message', :class => 'col-form-label col-md-2'
+        .col-md-10
+          = text_area_tag 'email[message]', nil, :class => 'form-control'    
+      .form-group.row
+        .col-md-12
+          = submit_tag 'Send Email', :class => 'btn btn-primary'
